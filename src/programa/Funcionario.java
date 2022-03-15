@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import javax.swing.text.Position;
+
 import entidade.ImpleFuncionario;
 
 public class Funcionario {
@@ -33,12 +35,17 @@ public class Funcionario {
 
 			System.out.print("Salário: ");
 			Double salario = sc.nextDouble();
+			
+			ImpleFuncionario imp = new ImpleFuncionario(id, nome, salario);
+			
+			list.add(imp);
 
 		}
 
 		System.out.println("Entre com o id do funcionário que ganhará aumento! ");
 		int idsalario = sc.nextInt();
-
+		
+		
 		sc.close();
 	}
 
