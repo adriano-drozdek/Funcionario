@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import javax.swing.text.Position;
-
 import entidade.ImpleFuncionario;
 
 public class Funcionario {
@@ -35,21 +33,29 @@ public class Funcionario {
 
 			System.out.print("Salário: ");
 			Double salario = sc.nextDouble();
-			
+
 			ImpleFuncionario imp = new ImpleFuncionario(id, nome, salario);
-			
+
 			list.add(imp);
 
 		}
 
 		System.out.println("Entre com o id do funcionário que ganhará aumento! ");
 		int idsalario = sc.nextInt();
-		
+		Integer pos = posicao(list, idsalario);
+		if (pos == null) {
+			System.out.println("id não existe! ");
+		} 
+		else {
+			System.out.println("Entre com a porcentagem: ");
+			double percent = sc.nextDouble();
+			list.get(pos).setSalario(percent);
+		}
 		
 		sc.close();
 	}
 
-	public Integer posicao(List<ImpleFuncionario> list, int id) {
+	public static Integer posicao(List<ImpleFuncionario> list, int id) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getId() == id) {
 				return i;
