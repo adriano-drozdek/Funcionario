@@ -16,10 +16,11 @@ public class Funcionario {
 
 		List<ImpleFuncionario> list = new ArrayList<>();
 
-		System.out.println("Informe a quantidade de funcionários: ");
+		System.out.print("Informe a quantidade de funcionários: ");
 		int n = sc.nextInt();
 		ImpleFuncionario[] vect = new ImpleFuncionario[n];
 
+		System.out.println();
 		for (int i = 0; i < n; i++) {
 
 			System.out.println("Funcionário # " + (i + 1) + ": ");
@@ -33,6 +34,7 @@ public class Funcionario {
 
 			System.out.print("Salário: ");
 			Double salario = sc.nextDouble();
+			System.out.println();
 
 			ImpleFuncionario imp = new ImpleFuncionario(id, nome, salario);
 
@@ -40,19 +42,24 @@ public class Funcionario {
 
 		}
 
-		System.out.println("Entre com o id do funcionário que ganhará aumento! ");
+		System.out.print("Entre com o id do funcionário que ganhará aumento! ");
 		int idsalario = sc.nextInt();
 		Integer pos = posicao(list, idsalario);
 		if (pos == null) {
-			System.out.println("id não existe! ");
-		} 
-		else {
-			System.out.println("Entre com a porcentagem: ");
+			System.out.println("id não existe, fim da execução! ");
+		} else {
+			System.out.print("Entre com a porcentagem: ");
 			double percent = sc.nextDouble();
-			list.get(pos).setSalario(percent);
+			list.get(pos).incrementoSalario(percent);
 		}
-		
-		sc.close();
+
+		System.out.println();
+		System.out.println("Lista de funcionario.");
+		for (ImpleFuncionario imp : list) {
+			System.out.println(imp);
+
+			sc.close();
+		}
 	}
 
 	public static Integer posicao(List<ImpleFuncionario> list, int id) {

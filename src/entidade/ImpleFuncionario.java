@@ -40,4 +40,11 @@ public class ImpleFuncionario {
 		this.salario = salario;
 	}
 
+	public void incrementoSalario(double porcentage) {
+		salario += salario * porcentage / 100.0;
+	}
+
+	public String toString() {
+		return "id: "+ id + " | nome: " + nome + " | salário: " + String.format("%.2f ", salario) + "$";
+	}
 }
